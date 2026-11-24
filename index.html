@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SoloPrint - Jasa Print MMT, Banner & Baliho Online</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#FEF2F2',
+              100: '#FEE2E2',
+              200: '#FECACA',
+              500: '#EF4444',
+              600: '#DC2626',
+              700: '#B91C1C',
+              800: '#991B1B',
+            },
+            mint: {
+              50: '#F1FBF3',
+              100: '#DCF7E2',
+            }
+          },
+          boxShadow: {
+            'card': '0 4px 20px -2px rgba(16, 24, 40, 0.06)',
+            'nav': '0 -4px 18px rgba(16, 24, 40, 0.08)',
+            'chat': '0 6px 16px rgba(220, 38, 38, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #F3F4F6;
+      color: #1F2937;
+      -webkit-tap-highlight-color: transparent;
+    }
+    button, a {
+      touch-action: manipulation;
+      cursor: pointer;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.75' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.75rem center;
+      background-repeat: no-repeat;
+      background-size: 1.25em 1.25em;
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fadeSlideUp 0.25s ease-out forwards; }
+  </style>
+</head>
+<body class="antialiased selection:bg-brand-100 selection:text-brand-700">
+
+  <!-- Mobile-First App Shell -->
+  <div class="max-w-lg mx-auto min-h-screen bg-[#FAFAFA] shadow-xl relative pb-28 flex flex-col">
+
+    <!-- ==================== TOP APP HEADER ==================== -->
+    <header class="sticky top-0 z-30 bg-white border-b border-gray-100 px-3.5 py-2.5">
+      <div class="flex items-center gap-2.5">
+        <!-- Brand Logo -->
+        <button type="button" onclick="switchMainTab('home')" class="shrink-0 w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-sm active:scale-95 transition" aria-label="Beranda">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 7h-1V4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v3H5a3 3 0 0 0-3 3v5a2 2 0 0 0 2 2h2v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3h2a2 2 0 0 0 2-2v-5a3 3 0 0 0-3-3ZM8 5h8v2H8V5Zm8 14H8v-4h8v4Zm3-4h-1v-1a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v1H5a1 1 0 0 1-1-1v-5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1Z"/>
+          </svg>
+        </button>
+        <span id="appBrandNameHeader" class="shrink-0 max-w-[82px] truncate text-[11px] font-extrabold leading-tight text-gray-800" title="SoloPrint">SoloPrint</span>
+
+        <!-- Search Input Pill -->
+        <div class="flex-1 relative">
+          <input
+            id="headerSearchInput"
+            type="text"
+            placeholder="Mau Print Apa Hari ini?"
+            onkeydown="if(event.key==='Enter') handleQuickSearch()"
+            class="w-full bg-gray-50 border border-gray-200 rounded-full pl-3.5 pr-9 py-1.5 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-brand-500 transition"
+          />
+          <button
+            type="button"
+            onclick="handleQuickSearch()"
+            class="absolute right-1 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center hover:bg-brand-700 transition"
+            aria-label="Cari">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.5-3.5"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Cart Icon with Badge -->
+        <button type="button" onclick="openCartModal()" class="relative p-1.5 text-gray-600 hover:text-brand-600 transition" aria-label="Keranjang">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+          </svg>
+          <span id="cartBadge" class="hidden absolute -top-0.5 -right-0.5 min-w-[16px] h-4 px-1 rounded-full bg-brand-600 text-white text-[10px] font-bold flex items-center justify-center">0</span>
+        </button>
+
+        <!-- Account Quick Button -->
+        <button type="button" onclick="switchMainTab('akun')" class="p-1.5 text-gray-600 hover:text-brand-600 transition" aria-label="Akun Pelanggan">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ==================== VIEW 1: HOME / FORM ORDER CETAK MMT ==================== -->
+    <main id="view-home" class="flex-1 px-4 pt-3 space-y-5 animate-fade-up">
+
+      <!-- Banner Status Login Pelanggan -->
+      <div id="customerAuthBanner" class="bg-white border border-gray-200 rounded-2xl p-3 shadow-sm flex items-center justify-between gap-2.5">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div id="authBannerAvatar" class="w-9 h-9 rounded-full bg-brand-50 text-brand-600 font-extrabold text-xs flex items-center justify-center shrink-0">
+            👤
+          </div>
+          <div class="min-w-0">
+            <p id="authBannerTitle" class="text-xs font-bold text-gray-900 truncate">Belum Login Pelanggan</p>
+            <p id="authBannerSub" class="text-[11px] text-gray-500 truncate">Daftar / masuk dulu sebelum memesan</p>
+          </div>
+        </div>
+        <button id="authBannerBtn" type="button" onclick="openAuthModal('register')" class="shrink-0 bg-brand-600 hover:bg-brand-700 text-white text-[11px] font-bold px-3 py-1.5 rounded-xl shadow-sm transition">
+          Daftar / Masuk
+        </button>
+      </div>
+
+      <!-- Quick Size Presets -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+          <span class="text-[11px] font-semibold text-gray-400 shrink-0 mr-1">Ukuran Populer:</span>
+          <button type="button" onclick="applyPresetSize(500, 75)" class="shrink-0 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-700 hover:border-brand-500 hover:text-brand-600 transition">500×75 cm</button>
+          <button type="button" onclick="applyPresetSize(300, 100)" class="shrink-0 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-700 hover:border-brand-500 hover:text-brand-600 transition">300×100 cm</button>
+          <button type="button" onclick="applyPresetSize(400, 200)" class="shrink-0 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-700 hover:border-brand-500 hover:text-brand-600 transition">400×200 cm</button>
+          <button type="button" onclick="applyPresetSize(160, 60)" class="shrink-0 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-700 hover:border-brand-500 hover:text-brand-600 transition">X-Banner 160×60</button>
+        </div>
+      </div>
+
+      <!-- SECTION: FORM ORDER -->
+      <section>
+        <div class="flex items-center gap-2 pb-2 border-b-2 border-brand-600">
+          <svg class="w-4 h-4 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+          </svg>
+          <h1 class="font-display font-bold text-base text-brand-600 tracking-tight">Form Order</h1>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="grid grid-cols-3 gap-1.5 mt-3.5 bg-gray-100/90 p-1 rounded-xl">
+          <button type="button" id="tab-outdoor" onclick="selectPrintCategory('outdoor')" class="cat-tab active flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-sm transition">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+            </svg>
+            <span>Print Outdoor</span>
+          </button>
+
+          <button type="button" id="tab-indoor" onclick="selectPrintCategory('indoor')" class="cat-tab flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold text-gray-600 hover:text-gray-900 transition">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+            <span>Print Indoor</span>
+          </button>
+
+          <button type="button" id="tab-uv" onclick="selectPrintCategory('uv')" class="cat-tab flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold text-gray-600 hover:text-gray-900 transition">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+            </svg>
+            <span>Print UV</span>
+          </button>
+        </div>
+
+        <!-- Form Card Container -->
+        <div class="mt-3 bg-white rounded-2xl p-4 shadow-card border border-gray-100 space-y-4">
+
+          <!-- Row 1: Bahan & Waktu Produksi -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="bahanSelect" class="flex items-center gap-1.5 text-xs font-bold text-gray-700 mb-1.5">
+                <svg class="w-3.5 h-3.5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                </svg>
+                <span>Bahan <span class="text-brand-600">*</span></span>
+              </label>
+              <select id="bahanSelect" onchange="recalculatePrice()" class="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 pr-8 text-xs font-medium text-gray-800 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition"></select>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="waktuSelect" class="flex items-center gap-1 text-xs font-bold text-gray-700">
+                  <svg class="w-3.5 h-3.5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                  </svg>
+                  <span>Waktu Produksi <span class="text-brand-600">*</span></span>
+                </label>
+                <button type="button" onclick="openModal('prodTimeModal')" class="w-4 h-4 rounded-full bg-orange-500 text-white text-[10px] font-extrabold flex items-center justify-center hover:bg-orange-600 transition" title="Info Waktu Produksi">?</button>
+              </div>
+              <select id="waktuSelect" onchange="recalculatePrice()" class="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 pr-8 text-xs font-medium text-gray-800 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition">
+                <option value="standart">Standart (1-2 Hari)</option>
+                <option value="express">Express (+25% • 6 Jam)</option>
+                <option value="kilat">Super Kilat (+50% • 2 Jam)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Row 2: Panjang (cm) & Lebar (cm) -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="panjangInput" class="flex items-center gap-1.5 text-xs font-bold text-gray-700 mb-1.5">
+                <svg class="w-3.5 h-3.5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H3V8h2v4h2V8h2v4h2V8h2v4h2V8h2v4h2V8h2v8z"/>
+                </svg>
+                <span>Panjang (cm) <span class="text-brand-600">*</span></span>
+              </label>
+              <input
+                id="panjangInput"
+                type="number"
+                inputmode="numeric"
+                min="10"
+                value="500"
+                oninput="recalculatePrice()"
+                placeholder="Contoh: 500"
+                class="w-full bg-white border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition"
+              />
+            </div>
+
+            <div>
+              <label for="lebarInput" class="flex items-center gap-1.5 text-xs font-bold text-gray-700 mb-1.5">
+                <svg class="w-3.5 h-3.5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 3v18c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2zm6 18h-4v-2h3v-2h-3v-2h3v-2h-3v-2h3V9h-3V7h3V5h-3V3h4v18z"/>
+                </svg>
+                <span>Lebar (cm) <span class="text-brand-600">*</span></span>
+              </label>
+              <input
+                id="lebarInput"
+                type="number"
+                inputmode="numeric"
+                min="10"
+                value="75"
+                oninput="recalculatePrice()"
+                placeholder="Contoh: 75"
+                class="w-full bg-white border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition"
+              />
+            </div>
+          </div>
+
+          <!-- Row 3: Jumlah & Harga Satuan -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="jumlahInput" class="flex items-center gap-1.5 text-xs font-bold text-gray-700 mb-1.5">
+                <svg class="w-3.5 h-3.5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2zm4 8h-2v-6h2v6zm0-8h-2V7h2v2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2z"/>
+                </svg>
+                <span>Jumlah <span class="text-brand-600">*</span></span>
+              </label>
+              <input
+                id="jumlahInput"
+                type="number"
+                inputmode="numeric"
+                min="1"
+                value="1"
+                oninput="recalculatePrice()"
+                class="w-full bg-white border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition"
+              />
+            </div>
+
+            <div>
+              <label class="flex items-center gap-1.5 text-xs font-bold text-gray-700 mb-1.5">
+                <svg class="w-3.5 h-3.5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                </svg>
+                <span>Harga Satuan</span>
+              </label>
+              <div id="hargaSatuanDisplay" class="w-full bg-gray-100 border border-gray-200/80 rounded-xl px-3.5 py-2.5 text-xs font-bold text-gray-800 select-all">
+                Rp 175.000
+              </div>
+            </div>
+          </div>
+
+          <!-- Area Meter Persegi Info Pill -->
+          <div class="flex items-center justify-between bg-gray-50 rounded-xl px-3 py-2 border border-gray-100 text-[11px] text-gray-500">
+            <span>Luas Cetak: <strong id="areaSummaryText" class="text-gray-800">3,75 m²</strong> (500 × 75 cm)</span>
+            <span id="ratePerMeterText" class="font-medium text-brand-600">Rp 46.667 / m²</span>
+          </div>
+
+          <!-- Divider: TAMBAHAN -->
+          <div class="flex items-center gap-2 pt-1">
+            <span class="text-[11px] font-extrabold tracking-wider text-brand-600 uppercase shrink-0">TAMBAHAN</span>
+            <div class="flex-1 border-b border-dashed border-gray-200"></div>
+          </div>
+
+          <!-- Finishing -->
+          <div>
+            <label for="finishingSelect" class="flex items-center gap-1.5 text-xs font-bold text-gray-700 mb-1.5">
+              <svg class="w-3.5 h-3.5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+              </svg>
+              <span>Finishing <span class="text-brand-600">*</span></span>
+            </label>
+            <select id="finishingSelect" onchange="recalculatePrice()" class="w-full bg-white border border-gray-200 rounded-xl px-3.5 py-2.5 pr-9 text-xs font-medium text-gray-800 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition">
+              <option value="mata_ikan_pojok">Lipat pas gambar mata ikan ( lobang ring ) pojok pojok</option>
+              <option value="mata_ikan_keliling">Lipat pas gambar + mata ikan keliling per 1 meter</option>
+              <option value="selongsong">Selongsong bambu / kayu (Kanan-Kiri / Atas-Bawah)</option>
+              <option value="lipat_pas">Lipat pas gambar saja (tanpa mata ikan)</option>
+              <option value="potong_pas">Potong pas gambar (tanpa lipat)</option>
+              <option value="lebih_bahan">Lebih bahan putih 5 cm keliling</option>
+            </select>
+          </div>
+
+          <!-- Catatan -->
+          <div>
+            <label for="catatanInput" class="flex items-center gap-1.5 text-xs font-bold text-gray-700 mb-1.5">
+              <svg class="w-3.5 h-3.5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h9l7-7V5c0-1.1-.9-2-2-2zm-5 16v-5h5l-5 5z"/>
+              </svg>
+              <span>Catatan</span>
+            </label>
+            <textarea
+              id="catatanInput"
+              rows="2"
+              placeholder="Masukkan catatan khusus untuk pesanan ini..."
+              class="w-full bg-white border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100 transition resize-none"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: UPLOAD DESAIN -->
+      <section>
+        <div class="flex items-center gap-2 pb-2 border-b-2 border-brand-600">
+          <svg class="w-4 h-4 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+          </svg>
+          <h2 class="font-display font-bold text-base text-brand-600 tracking-tight">Upload Desain</h2>
+        </div>
+
+        <!-- Upload Mode Switcher -->
+        <div class="grid grid-cols-2 gap-1.5 mt-3.5 bg-gray-100 p-1 rounded-xl">
+          <button type="button" id="uploadTabFile" onclick="switchUploadMode('file')" class="flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-bold bg-white text-brand-600 shadow-sm transition">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+            <span>Upload File</span>
+          </button>
+
+          <button type="button" id="uploadTabLink" onclick="switchUploadMode('link')" class="flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold text-gray-600 hover:text-gray-900 transition">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+            <span>Link Desain</span>
+          </button>
+        </div>
+
+        <!-- Mode A: Upload File Dropzone -->
+        <div id="uploadFileSection" class="mt-3">
+          <input id="designFileInput" type="file" accept=".pdf,.ai,.cdr,.psd,.jpg,.jpeg,.png,.zip,.rar" class="hidden" onchange="handleFileSelected(event)" />
+
+          <div
+            id="dropZone"
+            onclick="document.getElementById('designFileInput').click()"
+            ondragover="handleDragOver(event)"
+            ondragleave="handleDragLeave(event)"
+            ondrop="handleFileDrop(event)"
+            class="cursor-pointer bg-mint-50 hover:bg-mint-100/70 border-2 border-dashed border-brand-500/80 rounded-2xl p-6 text-center transition">
+
+            <div id="dropZoneEmpty" class="space-y-2.5">
+              <div class="w-11 h-11 mx-auto rounded-full bg-brand-100/80 text-brand-600 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-gray-800">Drag & Drop file desain Anda di sini</p>
+                <p class="text-[11px] text-gray-500 mt-0.5">atau klik untuk memilih file</p>
+              </div>
+              <div class="pt-1">
+                <span class="inline-flex items-center gap-1.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold px-4 py-2 rounded-lg shadow-sm transition">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                  <span>Pilih File</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Selected File Preview -->
+            <div id="dropZonePreview" class="hidden space-y-2.5">
+              <div id="previewThumbBox" class="w-16 h-16 mx-auto rounded-xl bg-white border border-gray-200 flex items-center justify-center overflow-hidden shadow-sm">
+                <span class="text-xs font-extrabold text-brand-600">FILE</span>
+              </div>
+              <div>
+                <p id="previewFileName" class="text-xs font-bold text-gray-900 truncate max-w-[260px] mx-auto">desain_spanduk.pdf</p>
+                <p id="previewFileSize" class="text-[11px] text-emerald-700 font-semibold mt-0.5">2.4 MB • Siap cetak</p>
+              </div>
+              <button type="button" onclick="removeUploadedFile(event)" class="text-[11px] font-bold text-brand-600 underline hover:text-brand-800">
+                Ganti / Hapus File
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode B: Link Desain -->
+        <div id="uploadLinkSection" class="hidden mt-3 bg-white rounded-2xl p-4 border border-gray-200 space-y-2">
+          <label for="designLinkInput" class="block text-xs font-bold text-gray-700">Tautan Google Drive / Canva / Dropbox</label>
+          <input
+            id="designLinkInput"
+            type="url"
+            placeholder="https://drive.google.com/file/d/..."
+            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:bg-white focus:border-brand-500 transition"
+          />
+          <p class="text-[11px] text-gray-500">Pastikan akses tautan sudah diubah ke <strong>"Siapa saja yang memiliki link"</strong>.</p>
+        </div>
+
+        <!-- Format Info Card -->
+        <div class="mt-3 bg-gray-100/90 rounded-2xl p-3.5 space-y-2 text-xs">
+          <div class="flex items-start gap-2">
+            <span class="w-4 h-4 rounded-full bg-brand-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">i</span>
+            <div>
+              <p class="font-bold text-gray-800">Format yang diterima:</p>
+              <p class="text-[11px] text-gray-600 mt-0.5">PDF, AI, CDR, PSD, JPG, PNG, ZIP, RAR</p>
+              <p class="text-[11px] italic text-gray-500 mt-0.5">Jika file lebih dari 1 (satu), silahkan gabung dengan ZIP/RAR</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 pt-1 border-t border-gray-200/70">
+            <svg class="w-4 h-4 text-brand-600 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/>
+            </svg>
+            <p class="text-[11px] text-gray-700"><strong>Ukuran maksimal:</strong> 50MB per file</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: CHECKOUT -->
+      <section class="pb-4">
+        <div class="flex items-center gap-2 pb-2 border-b-2 border-brand-600">
+          <svg class="w-4 h-4 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+          </svg>
+          <h2 class="font-display font-bold text-base text-brand-600 tracking-tight">Checkout</h2>
+        </div>
+
+        <!-- Total Pesanan Card -->
+        <div class="mt-3 bg-brand-50/90 border-l-4 border-brand-600 rounded-2xl p-4 shadow-sm">
+          <p class="text-xs font-medium text-gray-600">Total Pesanan</p>
+          <p id="totalPesananDisplay" class="font-display font-extrabold text-2xl text-brand-600 mt-1">Rp 175.000</p>
+          <p class="text-[11px] text-gray-500 mt-1">Belum termasuk biaya pengiriman</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="grid grid-cols-2 gap-2.5 mt-3.5">
+          <button
+            type="button"
+            onclick="addToCart()"
+            class="flex items-center justify-center gap-1.5 py-3 px-3 rounded-xl bg-white border border-gray-300 text-gray-800 font-bold text-xs shadow-sm hover:bg-gray-50 active:scale-[0.98] transition">
+            <svg class="w-4 h-4 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            <span>Tambah ke Keranjang</span>
+          </button>
+
+          <button
+            type="button"
+            onclick="buyNow()"
+            class="flex items-center justify-center gap-1.5 py-3 px-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-md active:scale-[0.98] transition">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+            </svg>
+            <span>Bayar Sekarang</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== VIEW 2: TRANSAKSI / RIWAYAT ORDER ==================== -->
+    <main id="view-transaksi" class="hidden flex-1 px-4 pt-4 space-y-4 animate-fade-up">
+      <div class="flex items-center justify-between pb-2 border-b-2 border-brand-600">
+        <h2 class="font-display font-bold text-base text-brand-600">Riwayat & Status Transaksi</h2>
+        <span class="text-[11px] font-semibold text-gray-500">Database Real-time</span>
+      </div>
+
+      <!-- Lacak Pesanan dari Database -->
+      <div class="bg-white rounded-2xl p-3.5 border border-gray-200 shadow-sm space-y-2">
+        <p class="text-xs font-bold text-gray-800">Lacak Pesanan (Kode Invoice / No. WA)</p>
+        <div class="flex gap-2">
+          <input id="trackSearchInput" type="text" placeholder="Contoh: INV-2026... atau 0812..." onkeydown="if(event.key==='Enter') searchOrderInDatabase()" class="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:bg-white focus:border-brand-500" />
+          <button type="button" onclick="searchOrderInDatabase()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition">Cari</button>
+        </div>
+      </div>
+
+      <div id="transaksiListContainer" class="space-y-3"></div>
+    </main>
+
+    <!-- ==================== VIEW 3: NOTIFIKASI ==================== -->
+    <main id="view-notifikasi" class="hidden flex-1 px-4 pt-4 space-y-4 animate-fade-up">
+      <div class="flex items-center justify-between pb-2 border-b-2 border-brand-600">
+        <h2 class="font-display font-bold text-base text-brand-600">Notifikasi Pesanan & Promo</h2>
+        <button type="button" onclick="markAllNotifRead()" class="text-[11px] font-bold text-brand-600 hover:underline">Tandai dibaca</button>
+      </div>
+      <div id="notifListContainer" class="space-y-2.5"></div>
+    </main>
+
+    <!-- ==================== VIEW 4: AKUN PELANGGAN ==================== -->
+    <main id="view-akun" class="hidden flex-1 px-4 pt-4 space-y-4 animate-fade-up">
+      <!-- State Belum Login -->
+      <div id="akunGuestCard" class="bg-white rounded-2xl p-5 shadow-card border border-gray-100 text-center space-y-3">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-2xl">👤</div>
+        <div>
+          <h2 class="font-display font-extrabold text-base text-gray-900">Akun Pelanggan Belum Masuk</h2>
+          <p class="text-xs text-gray-500 mt-1">Silakan daftar akun baru atau login menggunakan Nomor WhatsApp Anda sebelum melakukan pemesanan cetak MMT.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-2.5 pt-1">
+          <button type="button" onclick="openAuthModal('register')" class="py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow transition">Daftar Baru</button>
+          <button type="button" onclick="openAuthModal('login')" class="py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs rounded-xl transition">Masuk (Login)</button>
+        </div>
+      </div>
+
+      <!-- State Sudah Login -->
+      <div id="akunUserCard" class="hidden bg-white rounded-2xl p-4 shadow-card border border-gray-100 space-y-3">
+        <div class="flex items-center gap-3.5">
+          <div id="akunAvatar" class="w-12 h-12 rounded-2xl bg-brand-600 text-white font-display font-extrabold text-lg flex items-center justify-center shrink-0">P</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-1.5">
+              <h2 id="akunNameDisplay" class="font-display font-bold text-base text-gray-900 truncate">Pelanggan</h2>
+              <span id="akunStatusBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">AKTIF</span>
+            </div>
+            <p id="akunIdWaDisplay" class="text-xs text-gray-500 mt-0.5">USR-000 • 0812xxxx</p>
+            <p id="akunAddressDisplay" class="text-[11px] text-gray-400 mt-0.5 truncate">-</p>
+          </div>
+          <button type="button" onclick="logoutCustomer()" class="text-xs font-bold text-red-600 bg-red-50 px-3 py-1.5 rounded-lg">Keluar</button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl divide-y divide-gray-100 border border-gray-100 shadow-card text-xs">
+        <button type="button" onclick="openModal('prodTimeModal')" class="w-full px-4 py-3.5 flex items-center justify-between hover:bg-gray-50 transition">
+          <span class="font-medium text-gray-700">Panduan Ukuran & Resolusi File</span>
+          <span class="text-gray-400">Info ›</span>
+        </button>
+
+        <button type="button" onclick="switchMainTab('transaksi')" class="w-full px-4 py-3.5 flex items-center justify-between hover:bg-gray-50 transition">
+          <span class="font-medium text-gray-700">Riwayat Pesanan Cetak</span>
+          <span class="text-gray-400">Lihat ›</span>
+        </button>
+
+        <button type="button" onclick="openChatModal()" class="w-full px-4 py-3.5 flex items-center justify-between hover:bg-gray-50 transition rounded-b-2xl">
+          <span class="font-medium text-gray-700">Butuh Bantuan? Chat Admin & Operator</span>
+          <span class="text-brand-600 font-bold text-xs">Chat ›</span>
+        </button>
+      </div>
+    </main>
+
+    <!-- ==================== BOTTOM NAVIGATION BAR ==================== -->
+    <nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-lg bg-white border-t border-gray-100 shadow-nav z-30 px-2 pt-1.5 pb-2">
+      <div class="grid grid-cols-5 items-end text-center">
+        <button type="button" onclick="switchMainTab('home')" id="nav-home" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-brand-600">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 6H5c-1.1 0-2 .9-2 2v7h3v4h12v-4h3V8c0-1.1-.9-2-2-2zm-3 11H8v-4h8v4z"/></svg>
+          <span class="text-[11px] font-bold">Home</span>
+        </button>
+
+        <button type="button" onclick="switchMainTab('transaksi')" id="nav-transaksi" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-gray-500 hover:text-brand-600 transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 3.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2v14H3v3c0 1.66 1.34 3 3 3h12c1.66 0 3-1.34 3-3V2l-1.5 1.5zM19 19c0 .55-.45 1-1 1s-1-.45-1-1v-3H8V5h11v14z"/></svg>
+          <span class="text-[11px] font-medium">Transaksi</span>
+        </button>
+
+        <div class="flex flex-col items-center justify-center -mt-6">
+          <button type="button" onclick="openChatModal()" class="w-12 h-12 p-2.5 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-chat border-2 border-white flex items-center justify-center active:scale-95 transition" aria-label="Chat Admin">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+          </button>
+          <span class="text-[11px] font-extrabold text-brand-600 mt-1">CHAT</span>
+        </div>
+
+        <button type="button" onclick="switchMainTab('notifikasi')" id="nav-notifikasi" class="nav-btn relative flex flex-col items-center justify-center gap-0.5 text-gray-500 hover:text-brand-600 transition">
+          <span id="notifBadge" class="absolute top-0 right-5 w-2 h-2 rounded-full bg-brand-600"></span>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+          <span class="text-[11px] font-medium">Notifikasi</span>
+        </button>
+
+        <button type="button" onclick="switchMainTab('akun')" id="nav-akun" class="nav-btn flex flex-col items-center justify-center gap-0.5 text-gray-500 hover:text-brand-600 transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <span class="text-[11px] font-medium">Akun</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- 1. Production Time Info Modal -->
+  <div id="prodTimeModal" class="hidden fixed inset-0 z-50 bg-black/50 flex items-end sm:items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-3xl p-5 space-y-3.5 animate-fade-up">
+      <div class="flex items-center justify-between">
+        <h3 class="font-display font-bold text-base text-gray-900">Estimasi Waktu Produksi</h3>
+        <button type="button" onclick="closeModal('prodTimeModal')" class="p-1.5 rounded-full bg-gray-100 text-gray-500">✕</button>
+      </div>
+      <div class="space-y-2.5 text-xs text-gray-600">
+        <div class="p-3 rounded-xl bg-gray-50 border border-gray-100">
+          <p class="font-bold text-gray-900">Standart (1 - 2 Hari Kerja)</p>
+          <p class="mt-0.5">Harga normal. File masuk sebelum jam 15.00 WIB diproses di hari yang sama.</p>
+        </div>
+        <div class="p-3 rounded-xl bg-amber-50 border border-amber-100">
+          <p class="font-bold text-amber-900">Express (+25% • 6 Jam Selesai)</p>
+          <p class="mt-0.5">Prioritas antrean mesin cetak. Cocok untuk kebutuhan acara mendadak.</p>
+        </div>
+        <div class="p-3 rounded-xl bg-brand-50 border border-brand-100">
+          <p class="font-bold text-brand-700">Super Kilat (+50% • 2 Jam Selesai)</p>
+          <p class="mt-0.5">Langsung naik cetak setelah pembayaran & file desain dikonfirmasi.</p>
+        </div>
+      </div>
+      <button type="button" onclick="closeModal('prodTimeModal')" class="w-full py-2.5 bg-brand-600 text-white font-bold text-xs rounded-xl">Mengerti</button>
+    </div>
+  </div>
+
+  <!-- 2. Cart Modal -->
+  <div id="cartModal" class="hidden fixed inset-0 z-50 bg-black/50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full max-w-lg rounded-t-3xl sm:rounded-3xl p-5 max-h-[85vh] flex flex-col animate-fade-up">
+      <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+        <h3 class="font-display font-bold text-base text-gray-900">Keranjang Cetak MMT</h3>
+        <button type="button" onclick="closeModal('cartModal')" class="p-1.5 rounded-full bg-gray-100 text-gray-500">✕</button>
+      </div>
+      <div id="cartItemsContainer" class="flex-1 overflow-y-auto py-3 space-y-2.5"></div>
+      <div class="pt-3 border-t border-gray-100 space-y-2.5">
+        <div class="flex items-center justify-between text-xs">
+          <span class="text-gray-500 font-medium">Subtotal Keranjang</span>
+          <span id="cartModalTotal" class="font-display font-extrabold text-base text-brand-600">Rp 0</span>
+        </div>
+        <button type="button" onclick="proceedToCheckoutFromCart()" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow transition">Lanjut ke Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Checkout Modal (Pembayaran Manual QRIS & BCA) -->
+  <div id="checkoutModal" class="hidden fixed inset-0 z-50 bg-black/50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full max-w-lg rounded-t-3xl sm:rounded-3xl p-5 max-h-[90vh] overflow-y-auto space-y-4 animate-fade-up">
+      <div class="flex items-center justify-between pb-2.5 border-b border-gray-100">
+        <h3 class="font-display font-bold text-base text-gray-900">Konfirmasi & Pembayaran</h3>
+        <button type="button" onclick="closeModal('checkoutModal')" class="p-1.5 rounded-full bg-gray-100 text-gray-500">✕</button>
+      </div>
+
+      <div id="checkoutSummaryBox" class="bg-gray-50 rounded-2xl p-3 text-xs space-y-1.5 border border-gray-100"></div>
+
+      <div class="space-y-2.5 text-xs">
+        <div>
+          <label class="font-bold text-gray-700 block mb-1">Nama Pemesan <span class="text-brand-600">*</span></label>
+          <input id="custName" type="text" placeholder="Masukkan nama Anda / usaha" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-brand-500" />
+        </div>
+        <div>
+          <label class="font-bold text-gray-700 block mb-1">Nomor WhatsApp Aktif <span class="text-brand-600">*</span></label>
+          <input id="custWa" type="tel" placeholder="0812xxxxxxxx" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-brand-500" />
+        </div>
+        <div>
+          <label class="font-bold text-gray-700 block mb-1">Opsi Pengiriman</label>
+          <select id="deliveryMethod" onchange="updateCheckoutTotal()" class="w-full bg-white border border-gray-200 rounded-xl px-3.5 py-2.5 pr-9 font-medium">
+            <option value="0">Ambil Sendiri di Toko (Gratis)</option>
+            <option value="15000">Kurir Instan Dalam Kota (+Rp 15.000)</option>
+            <option value="25000">Ekspedisi Reguler (+Rp 25.000)</option>
+          </select>
+        </div>
+
+        <!-- Pilihan Metode Pembayaran Manual -->
+        <div>
+          <label class="font-bold text-gray-700 block mb-1.5">Metode Pembayaran Manual <span class="text-brand-600">*</span></label>
+          <div class="grid grid-cols-2 gap-2">
+            <label id="payBcaCard" onclick="toggleManualPayMethod('Transfer BCA')" class="cursor-pointer border-2 border-brand-600 bg-brand-50/70 rounded-xl p-2.5 flex items-center gap-2 transition">
+              <input type="radio" name="payMethod" value="Transfer BCA" checked class="accent-brand-600" />
+              <div>
+                <p class="font-extrabold text-gray-900">Transfer BCA</p>
+                <p class="text-[10px] text-gray-500">Cek Manual + Upload Bukti</p>
+              </div>
+            </label>
+            <label id="payQrisCard" onclick="toggleManualPayMethod('QRIS Manual')" class="cursor-pointer border border-gray-200 bg-white rounded-xl p-2.5 flex items-center gap-2 transition">
+              <input type="radio" name="payMethod" value="QRIS Manual" class="accent-brand-600" />
+              <div>
+                <p class="font-extrabold text-gray-900">QRIS Manual</p>
+                <p class="text-[10px] text-gray-500">Scan QR + Upload Bukti</p>
+              </div>
+            </label>
+          </div>
+
+          <!-- Info Rekening BCA -->
+          <div id="bcaInfoBox" class="mt-2.5 bg-blue-50/80 border border-blue-200 rounded-2xl p-3 flex items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-700 bg-blue-100 px-2 py-0.5 rounded">BANK BCA</span>
+              <p id="bcaAccountDisplay" class="font-mono font-extrabold text-sm text-gray-900 mt-1">0153829104</p>
+              <p id="bcaNameDisplay" class="text-[11px] font-semibold text-gray-600">a.n. SOLOPRINT DIGITAL</p>
+            </div>
+            <button type="button" onclick="copyBcaAccount()" class="shrink-0 bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold px-3 py-2 rounded-xl shadow-sm transition">
+              Salin Rek
+            </button>
+          </div>
+
+          <!-- Info QRIS Manual -->
+          <div id="qrisInfoBox" class="hidden mt-2.5 bg-gray-50 border border-gray-200 rounded-2xl p-3 text-center space-y-2">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded">SCAN QRIS TOKO</span>
+            <div id="qrisCheckoutPreviewBox" class="flex justify-center">
+              <img id="qrisCheckoutImg" src="" alt="QRIS Toko" class="w-40 h-40 object-contain rounded-xl border border-gray-200 bg-white p-1.5 hidden" />
+              <div id="qrisCheckoutPlaceholder" class="w-40 h-40 rounded-xl border border-dashed border-gray-300 bg-white flex flex-col items-center justify-center p-2 text-[10px] text-gray-500">
+                <span class="text-xl mb-1">📱</span>
+                <span>QRIS muncul setelah dibuat pesanan / diatur Admin</span>
+              </div>
+            </div>
+            <p class="text-[11px] text-gray-500">Scan via M-Banking / Dana / OVO / GoPay, lalu unggah bukti bayar di halaman Nota.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-brand-50 rounded-2xl p-3.5 flex items-center justify-between">
+        <div>
+          <p class="text-[11px] text-gray-600">Total Tagihan (<span id="checkoutShippingText">Gratis Ongkir</span>)</p>
+          <p id="checkoutFinalTotal" class="font-display font-extrabold text-xl text-brand-600">Rp 175.000</p>
+        </div>
+        <button id="btnSubmitOrder" type="button" onclick="submitOrder()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs px-5 py-3 rounded-xl shadow-md transition">Buat Pesanan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Invoice & Upload Bukti Pembayaran Modal -->
+  <div id="invoiceModal" class="hidden fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-3xl p-5 max-h-[90vh] overflow-y-auto space-y-3.5 animate-fade-up">
+      <div class="flex items-center justify-between">
+        <span id="invStatusBadge" class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">Menunggu Pembayaran</span>
+        <button type="button" onclick="closeModal('invoiceModal')" class="p-1.5 rounded-full bg-gray-100 text-gray-500">✕</button>
+      </div>
+
+      <div class="text-center space-y-1">
+        <h3 class="font-display font-extrabold text-lg text-gray-900">Nota & Pembayaran Manual</h3>
+        <p id="invCode" class="text-xs font-mono font-bold text-brand-600">INV-20260512-881</p>
+        <p id="invDate" class="text-[11px] text-gray-400">12 Mei 2026</p>
+      </div>
+
+      <div class="bg-gray-50 rounded-2xl p-3 text-xs space-y-1.5 border border-gray-100">
+        <p id="invCustInfo" class="font-bold text-gray-800">Pemesan: -</p>
+        <div id="invItemsList" class="space-y-1 text-[11px] text-gray-600 border-t border-gray-200/70 pt-1.5"></div>
+        <div class="flex justify-between pt-1.5 border-t border-gray-200/70 font-extrabold text-sm text-brand-600">
+          <span>Total Transfer</span>
+          <span id="invTotal">Rp 175.000</span>
+        </div>
+      </div>
+
+      <!-- Detail Instruksi Bayar Sesuai Metode (BCA atau QRIS) -->
+      <div id="invPaymentDetailBox" class="bg-blue-50/70 border border-blue-200 rounded-2xl p-3.5 text-xs space-y-2"></div>
+
+      <!-- Upload Bukti Pembayaran -->
+      <div class="bg-emerald-50/70 border border-emerald-200 rounded-2xl p-3.5 space-y-2">
+        <p class="text-xs font-bold text-emerald-900">📤 Konfirmasi & Upload Bukti Transfer</p>
+        <div id="invProofStatusBox" class="hidden text-[11px] text-emerald-700 font-semibold bg-white p-2 rounded-xl border border-emerald-200"></div>
+        <input id="proofFileInput" type="file" accept="image/*,.pdf" onchange="handleProofFileSelected(event)" class="w-full text-[11px] text-gray-600 file:mr-2.5 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-bold file:bg-emerald-600 file:text-white hover:file:bg-emerald-700" />
+        <button id="btnUploadProof" type="button" onclick="uploadSelectedProof()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition">
+          Kirim Bukti Pembayaran ke Admin
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2.5 pt-1">
+        <button type="button" onclick="copyInvoiceText()" class="py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs rounded-xl transition">Salin Nota</button>
+        <button type="button" onclick="openChatModal()" class="py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition">Chat Admin</button>
+      </div>
+      <button type="button" onclick="closeModal('invoiceModal'); switchMainTab('transaksi')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition">Lihat Status Pesanan</button>
+    </div>
+  </div>
+
+  <!-- 5. Customer Registration & Login Modal -->
+  <div id="authModal" class="hidden fixed inset-0 z-50 bg-black/60 flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl p-5 max-h-[90vh] overflow-y-auto space-y-4 animate-fade-up">
+      <div class="flex items-center justify-between pb-2 border-b border-gray-100">
+        <div>
+          <h3 class="font-display font-extrabold text-base text-gray-900">Akun Pelanggan</h3>
+          <p class="text-[11px] text-gray-500">Wajib registrasi / masuk sebelum memesan cetak MMT</p>
+        </div>
+        <button type="button" onclick="closeModal('authModal')" class="p-1.5 rounded-full bg-gray-100 text-gray-500">✕</button>
+      </div>
+
+      <!-- Switch Tabs Daftar / Login -->
+      <div class="grid grid-cols-2 gap-1.5 bg-gray-100 p-1 rounded-xl">
+        <button type="button" id="authTabRegister" onclick="switchAuthTab('register')" class="py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-sm transition">Daftar Baru</button>
+        <button type="button" id="authTabLogin" onclick="switchAuthTab('login')" class="py-2 rounded-lg text-xs font-semibold text-gray-600 transition">Sudah Punya Akun</button>
+      </div>
+
+      <!-- Form Daftar Baru -->
+      <div id="authRegisterForm" class="space-y-2.5 text-xs">
+        <div>
+          <label class="font-bold text-gray-700 block mb-1">Nama Lengkap / Nama Usaha <span class="text-brand-600">*</span></label>
+          <input id="regName" type="text" placeholder="Contoh: Budi Santoso / Toko Maju" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-brand-500" />
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="font-bold text-gray-700 block mb-1">Nomor WhatsApp <span class="text-brand-600">*</span></label>
+            <input id="regWa" type="tel" placeholder="0812xxxxxxxx" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-brand-500" />
+          </div>
+          <div>
+            <label class="font-bold text-gray-700 block mb-1">Buat PIN (6 Digit) <span class="text-brand-600">*</span></label>
+            <input id="regPin" type="password" inputmode="numeric" maxlength="6" placeholder="123456" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 font-mono focus:outline-none focus:border-brand-500" />
+          </div>
+        </div>
+        <div>
+          <label class="font-bold text-gray-700 block mb-1">Email (Opsional)</label>
+          <input id="regEmail" type="email" placeholder="nama@email.com" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-brand-500" />
+        </div>
+        <div>
+          <label class="font-bold text-gray-700 block mb-1">Alamat Lengkap</label>
+          <textarea id="regAddress" rows="2" placeholder="Alamat pengiriman / domisili..." class="w-full border border-gray-200 rounded-xl px-3.5 py-2 focus:outline-none focus:border-brand-500 resize-none"></textarea>
+        </div>
+        <button id="btnDoRegister" type="button" onclick="handleCustomerRegister()" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow-md transition">
+          Daftar & Lanjutkan Pemesanan
+        </button>
+      </div>
+
+      <!-- Form Login Pelanggan -->
+      <div id="authLoginForm" class="hidden space-y-3 text-xs">
+        <div>
+          <label class="font-bold text-gray-700 block mb-1">Nomor WhatsApp Terdaftar <span class="text-brand-600">*</span></label>
+          <input id="loginWa" type="tel" placeholder="0812xxxxxxxx" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-brand-500" />
+        </div>
+        <div>
+          <label class="font-bold text-gray-700 block mb-1">PIN Login <span class="text-brand-600">*</span></label>
+          <input id="loginPin" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" onkeydown="if(event.key==='Enter') handleCustomerLogin()" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 font-mono focus:outline-none focus:border-brand-500" />
+        </div>
+        <button id="btnDoLogin" type="button" onclick="handleCustomerLogin()" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow-md transition">
+          Masuk ke Akun Saya
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Live Chat Modal -->
+  <div id="chatModal" class="hidden fixed inset-0 z-50 bg-black/50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full max-w-lg rounded-t-3xl sm:rounded-3xl h-[78vh] flex flex-col animate-fade-up">
+      <div class="bg-brand-600 text-white px-4 py-3.5 rounded-t-3xl flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-full bg-white text-brand-600 font-extrabold text-xs flex items-center justify-center">CS</div>
+          <div>
+            <p class="text-sm font-bold">Admin & Operator Cetak</p>
+            <p id="chatIdentitySubtitle" class="text-[11px] text-brand-100">● Terhubung langsung ke Dashboard Admin</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button type="button" onclick="loadCustomerChatMessages(true)" class="p-1.5 rounded-full bg-white/15 hover:bg-white/25 text-white text-xs" title="Muat Ulang Chat">🔄</button>
+          <button type="button" onclick="closeChatModal()" class="p-1.5 rounded-full bg-white/15 hover:bg-white/25 text-white">✕</button>
+        </div>
+      </div>
+
+      <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 text-xs">
+        <div class="bg-white border border-gray-100 rounded-2xl rounded-tl-none p-3 max-w-[82%] shadow-sm">
+          <p class="text-gray-800">Halo Kak! Selamat datang di <strong data-app-name>SoloPrint</strong>. Tulis pertanyaan Anda di bawah, Admin & Operator Cetak kami akan langsung membalasnya.</p>
+          <span class="text-[10px] text-gray-400 mt-1 block">CS <span data-app-name>SoloPrint</span></span>
+        </div>
+      </div>
+
+      <div class="px-3 py-2 bg-white border-t border-gray-100 flex gap-1.5 overflow-x-auto no-scrollbar">
+        <button type="button" onclick="sendQuickChat('Kirim rincian order saya saat ini ke admin')" class="shrink-0 text-[11px] font-semibold bg-brand-50 text-brand-700 px-3 py-1.5 rounded-full border border-brand-100">Kirim Spec Order</button>
+        <button type="button" onclick="sendQuickChat('Halo Admin, mohon cek file desain saya ya')" class="shrink-0 text-[11px] font-semibold bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full">Cek File Desain</button>
+        <button type="button" onclick="sendQuickChat('Berapa lama proses cetak MMT?')" class="shrink-0 text-[11px] font-semibold bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full">Lama Cetak?</button>
+      </div>
+
+      <div class="p-3 bg-white border-t border-gray-100 flex gap-2">
+        <input id="chatInput" type="text" placeholder="Tulis pesan ke Admin & Operator Cetak..." onkeydown="if(event.key==='Enter') sendChatMessage()" class="flex-1 bg-gray-100 rounded-full px-4 py-2.5 text-xs focus:outline-none focus:bg-white focus:border-brand-500 border border-transparent" />
+        <button id="btnSendChat" type="button" onclick="sendChatMessage()" class="w-10 h-10 rounded-full bg-brand-600 hover:bg-brand-700 text-white flex items-center justify-center shrink-0 transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-gray-900/95 text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-lg flex items-center gap-2 whitespace-nowrap">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="toastText">Berhasil ditambahkan</span>
+  </div>
+
+  <!-- Data Boot dari Server GAS -->
+  <script id="gasBootScript" type="application/json"><?!= bootDataJson ?></script>
+
+  <!-- ==================== JAVASCRIPT APPLICATION LOGIC ==================== -->
+  <script>
+    let GAS_BOOT = null;
+    try {
+      const rawBootEl = document.getElementById('gasBootScript');
+      const rawBootTxt = rawBootEl ? rawBootEl.textContent.trim() : '';
+      if (rawBootTxt && rawBootTxt.startsWith('{')) {
+        GAS_BOOT = JSON.parse(rawBootTxt);
+      }
+    } catch (e) {}
+
+    let WEB_APP_URL = (GAS_BOOT && GAS_BOOT.webAppUrl) ? GAS_BOOT.webAppUrl : '';
+    const MEM_LOCAL = {};
+
+    function safeGetLocal(key) {
+      try { return localStorage.getItem(key) || MEM_LOCAL[key] || ''; } catch (e) { return MEM_LOCAL[key] || ''; }
+    }
+    function safeSetLocal(key, val) {
+      MEM_LOCAL[key] = val;
+      try { localStorage.setItem(key, val); } catch (e) {}
+    }
+    function safeRemoveLocal(key) {
+      delete MEM_LOCAL[key];
+      try { localStorage.removeItem(key); } catch (e) {}
+    }
+
+    let CATALOG = {
+      outdoor: {
+        label: 'Print Outdoor',
+        materials: [
+          { id: 'flexy_380_matte', name: 'Flexy 380 matte', ratePerSqm: 46667 },
+          { id: 'flexy_280', name: 'Flexy 280 gr (Ekonomis)', ratePerSqm: 25000 },
+          { id: 'flexy_340', name: 'Flexy 340 gr (Standar Tebal)', ratePerSqm: 35000 },
+          { id: 'korea_440', name: 'Flexy Korea 440 gr High-Res', ratePerSqm: 60000 },
+          { id: 'backlite_out', name: 'Backlite Outdoor (Neon Box)', ratePerSqm: 85000 }
+        ]
+      },
+      indoor: {
+        label: 'Print Indoor',
+        materials: [
+          { id: 'albatros', name: 'Albatros + Laminasi', ratePerSqm: 75000 },
+          { id: 'luster', name: 'Luster Photo Paper', ratePerSqm: 80000 },
+          { id: 'vinyl_in', name: 'Sticker Vinyl Indoor', ratePerSqm: 70000 },
+          { id: 'canvas', name: 'Art Canvas Indoor', ratePerSqm: 135000 }
+        ]
+      },
+      uv: {
+        label: 'Print UV',
+        materials: [
+          { id: 'uv_flexy', name: 'UV Flexy Korea Super Tajam', ratePerSqm: 95000 },
+          { id: 'uv_backlite', name: 'UV Backlite Film Double Side', ratePerSqm: 140000 },
+          { id: 'uv_sticker', name: 'UV Sticker Transparan / Ritrama', ratePerSqm: 120000 }
+        ]
+      }
+    };
+
+    const PRODUCTION_MULTIPLIER = { standart: 1, express: 1.25, kilat: 1.5 };
+    const FINISHING_ADDON = {
+      mata_ikan_pojok: 0,
+      mata_ikan_keliling: 10000,
+      selongsong: 5000,
+      lipat_pas: 0,
+      potong_pas: 0,
+      lebih_bahan: 0
+    };
+
+    let currentCategory = 'outdoor';
+    let currentBranch = 'Pusat Percetakan';
+    let uploadMode = 'file';
+    let uploadedFileMeta = null;
+    let cartItems = [];
+    let checkoutPayloadItems = [];
+    let ordersHistory = [];
+    let activeInvoiceOrder = null;
+    let pendingProofFile = null;
+    let paymentConfig = {
+      bcaAccount: '0153829104',
+      bcaName: 'SOLOPRINT DIGITAL',
+      qrisImageUrl: '',
+      appName: 'SoloPrint'
+    };
+    let currentUser = null;
+    let pendingActionAfterAuth = null;
+    let notifications = [
+      {
+        id: 1,
+        title: 'Selamat Datang di Jasa Cetak MMT',
+        desc: 'Daftar akun pelanggan terlebih dahulu untuk mulai memesan spanduk & baliho online.',
+        time: 'Info',
+        unread: true
+      }
+    ];
+
+    try {
+      const savedOrders = safeGetLocal('mmt_orders_cache');
+      if (savedOrders) ordersHistory = JSON.parse(savedOrders);
+    } catch (e) {}
+
+    try {
+      const savedUser = safeGetLocal('mmt_current_user');
+      if (savedUser) currentUser = JSON.parse(savedUser);
+    } catch (e) {}
+
+    function normalizeWa(wa) {
+      let clean = String(wa || '').replace(/[^0-9]/g, '');
+      if (clean.startsWith('62')) clean = '0' + clean.slice(2);
+      return clean;
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // Bridge GAS vs HTTP POST Fallback vs Local Preview
+    function callGAS(fnName, ...args) {
+      const hasGoogleRun = (typeof window.google !== 'undefined' && google.script && google.script.run);
+      if (hasGoogleRun || WEB_APP_URL) {
+        return new Promise((resolve, reject) => {
+          let settled = false;
+          const tryFetchFallback = async (prevErr) => {
+            if (!WEB_APP_URL) {
+              if (!settled) {
+                settled = true;
+                reject(prevErr || new Error('Koneksi terputus'));
+              }
+              return;
+            }
+            try {
+              const resp = await fetch(WEB_APP_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({ fn: fnName, args: args })
+              });
+              const data = await resp.json();
+              if (!settled) {
+                settled = true;
+                resolve(data);
+              }
+            } catch (fetchErr) {
+              if (!settled) {
+                settled = true;
+                reject(prevErr || fetchErr);
+              }
+            }
+          };
+
+          if (!hasGoogleRun) {
+            tryFetchFallback(null);
+            return;
+          }
+
+          const timer = setTimeout(() => {
+            if (!settled) tryFetchFallback(new Error('Timeout GAS'));
+          }, 6000);
+
+          try {
+            google.script.run
+              .withSuccessHandler((res) => {
+                if (!settled) {
+                  settled = true;
+                  clearTimeout(timer);
+                  resolve(res);
+                }
+              })
+              .withFailureHandler((err) => {
+                clearTimeout(timer);
+                if (!settled) tryFetchFallback(err);
+              })[fnName](...args);
+          } catch (e) {
+            clearTimeout(timer);
+            tryFetchFallback(e);
+          }
+        });
+      }
+
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const simSettings = JSON.parse(safeGetLocal('mmt_sim_settings') || '{"adminEmail":"admin@percetakan.com","adminPin":"123456","bcaAccount":"0153829104","bcaName":"SOLOPRINT DIGITAL","qrisImageUrl":"","autoApproveUser":"YA"}');
+          const simDb = JSON.parse(safeGetLocal('mmt_sim_db') || '[]');
+          const simUsers = JSON.parse(safeGetLocal('mmt_sim_users') || '[]');
+
+          if (fnName === 'getPublicPaymentConfig') {
+            resolve({
+              bcaAccount: simSettings.bcaAccount,
+              bcaName: simSettings.bcaName,
+              qrisImageUrl: simSettings.qrisImageUrl,
+              appName: simSettings.appName || 'SoloPrint',
+              catalog: CATALOG,
+              webAppUrl: ''
+            });
+          } else if (fnName === 'registerCustomer') {
+            const uData = args[0];
+            const waNorm = normalizeWa(uData.wa);
+            if (simUsers.some(u => normalizeWa(u.wa) === waNorm)) {
+              resolve({ success: false, message: 'Nomor WhatsApp sudah terdaftar! Silakan pilih tab Sudah Punya Akun.' });
+              return;
+            }
+            const status = simSettings.autoApproveUser === 'TIDAK' ? 'MENUNGGU PERSETUJUAN' : 'AKTIF';
+            const newUser = {
+              id: 'USR-' + Date.now().toString().slice(-6),
+              createdAt: new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }),
+              name: uData.name,
+              wa: waNorm,
+              email: uData.email || '',
+              address: uData.address || '',
+              pin: uData.pin,
+              status
+            };
+            simUsers.unshift(newUser);
+            safeSetLocal('mmt_sim_users', JSON.stringify(simUsers));
+            resolve({
+              success: true,
+              user: newUser,
+              message: status === 'AKTIF' ? 'Registrasi berhasil! Akun Anda langsung aktif.' : 'Registrasi berhasil! Menunggu persetujuan Admin.'
+            });
+          } else if (fnName === 'loginCustomer') {
+            const [waIn, pinIn] = args;
+            const waNorm = normalizeWa(waIn);
+            const found = simUsers.find(u => normalizeWa(u.wa) === waNorm && String(u.pin) === String(pinIn));
+            if (!found) {
+              resolve({ success: false, message: 'Nomor WhatsApp atau PIN salah!' });
+              return;
+            }
+            if (found.status !== 'AKTIF') {
+              resolve({ success: false, message: `Akun berstatus ${found.status}. Hubungi Admin.` });
+              return;
+            }
+            resolve({
+              success: true,
+              user: found,
+              orders: simDb.filter(o => normalizeWa(o.custWa) === waNorm)
+            });
+          } else if (fnName === 'submitOrderToGAS') {
+            const p = args[0];
+            const invCode = 'INV-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-' + Math.floor(100 + Math.random() * 900);
+            const orderObj = {
+              code: invCode,
+              date: new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }),
+              branch: p.branch,
+              custName: p.custName,
+              custWa: normalizeWa(p.custWa),
+              deliveryLabel: p.deliveryLabel,
+              payMethod: p.payMethod,
+              grandTotal: p.grandTotal,
+              status: 'Menunggu Pembayaran',
+              designUrl: p.fileName ? `File terupload: ${p.fileName}` : (p.designLink || 'Tanpa file'),
+              paymentProofUrl: '',
+              items: p.items
+            };
+            simDb.unshift(orderObj);
+            safeSetLocal('mmt_sim_db', JSON.stringify(simDb));
+            resolve({ success: true, order: orderObj });
+          } else if (fnName === 'submitPaymentProof') {
+            const [code, , , fName] = args;
+            const proofUrl = '#bukti-' + encodeURIComponent(fName);
+            simDb.forEach(o => {
+              if (o.code === code) {
+                o.status = 'Verifikasi Pembayaran';
+                o.paymentProofUrl = proofUrl;
+              }
+            });
+            safeSetLocal('mmt_sim_db', JSON.stringify(simDb));
+            resolve({ success: true, proofUrl, status: 'Verifikasi Pembayaran', message: 'Bukti pembayaran berhasil dikirim!' });
+          } else if (fnName === 'trackCustomerOrder') {
+            const q = String(args[0]).toLowerCase();
+            resolve(simDb.filter(o => o.code.toLowerCase().includes(q) || o.custWa.includes(q)));
+          } else if (fnName === 'getCustomerChatHistory') {
+            const sid = String(args[0] || '');
+            const simChats = JSON.parse(safeGetLocal('mmt_sim_chats') || '[]');
+            resolve(simChats.filter(m => m.sessionId === sid));
+          } else if (fnName === 'sendCustomerChat') {
+            const [sid, sName, , text] = args;
+            const simChats = JSON.parse(safeGetLocal('mmt_sim_chats') || '[]');
+            simChats.push({
+              id: 'MSG-' + Date.now().toString().slice(-6),
+              time: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }),
+              sessionId: sid,
+              customerName: sName,
+              sender: 'CUSTOMER',
+              senderName: sName,
+              text: text,
+              readStatus: 'UNREAD'
+            });
+            safeSetLocal('mmt_sim_chats', JSON.stringify(simChats));
+            resolve({ success: true, messages: simChats.filter(m => m.sessionId === sid) });
+          }
+        }, 300);
+      });
+    }
+
+    function formatRupiah(num) {
+      return 'Rp ' + Math.round(num).toLocaleString('id-ID');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastText').textContent = msg;
+      toast.classList.remove('hidden');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => toast.classList.add('hidden'), 2800);
+    }
+
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    // Terapkan nama aplikasi yang disimpan Admin ke identitas halaman pelanggan.
+    function applyCustomerBranding() {
+      const appName = String(paymentConfig.appName || 'SoloPrint').trim() || 'SoloPrint';
+      document.title = appName + ' - Jasa Print MMT, Banner & Baliho Online';
+      const headerName = document.getElementById('appBrandNameHeader');
+      if (headerName) { headerName.textContent = appName; headerName.title = appName; }
+      document.querySelectorAll('[data-app-name]').forEach(el => { el.textContent = appName; });
+      if (Array.isArray(notifications) && notifications.length && notifications[0].id === 1) {
+        notifications[0].title = 'Selamat Datang di ' + appName;
+      }
+    }
+
+    // 1. INITIALIZATION
+    async function initCustomerApp() {
+      if (GAS_BOOT) {
+        paymentConfig = GAS_BOOT;
+        if (GAS_BOOT.webAppUrl) {
+          WEB_APP_URL = GAS_BOOT.webAppUrl;
+        }
+        if (GAS_BOOT.catalog && (GAS_BOOT.catalog.outdoor || GAS_BOOT.catalog.indoor || GAS_BOOT.catalog.uv)) {
+          CATALOG = GAS_BOOT.catalog;
+        }
+        applyCustomerBranding();
+      }
+
+      selectPrintCategory('outdoor');
+      renderTransaksiList();
+      renderNotifications();
+      updateCustomerAuthUI();
+
+      if (!GAS_BOOT) {
+        try {
+          const cfg = await callGAS('getPublicPaymentConfig');
+          if (cfg) {
+            paymentConfig = cfg;
+            if (cfg.webAppUrl) {
+              WEB_APP_URL = cfg.webAppUrl;
+            }
+            if (cfg.catalog && (cfg.catalog.outdoor || cfg.catalog.indoor || cfg.catalog.uv)) {
+              CATALOG = cfg.catalog;
+              selectPrintCategory(currentCategory);
+            }
+            applyCustomerBranding();
+          }
+        } catch (e) {}
+      }
+    }
+
+    // 2. CUSTOMER REGISTRATION & LOGIN UI
+    function updateCustomerAuthUI() {
+      const avatar = document.getElementById('authBannerAvatar');
+      const title = document.getElementById('authBannerTitle');
+      const sub = document.getElementById('authBannerSub');
+      const btn = document.getElementById('authBannerBtn');
+
+      const guestCard = document.getElementById('akunGuestCard');
+      const userCard = document.getElementById('akunUserCard');
+
+      if (currentUser && currentUser.wa) {
+        const initials = (currentUser.name || 'P').slice(0, 2).toUpperCase();
+        avatar.textContent = initials;
+        avatar.className = 'w-9 h-9 rounded-full bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center shrink-0';
+        title.textContent = currentUser.name;
+        sub.textContent = `${currentUser.wa} • Status: ${currentUser.status || 'AKTIF'}`;
+        btn.textContent = 'Akun Saya';
+        btn.onclick = () => switchMainTab('akun');
+
+        guestCard.classList.add('hidden');
+        userCard.classList.remove('hidden');
+        document.getElementById('akunAvatar').textContent = initials;
+        document.getElementById('akunNameDisplay').textContent = currentUser.name;
+        document.getElementById('akunStatusBadge').textContent = currentUser.status || 'AKTIF';
+        document.getElementById('akunIdWaDisplay').textContent = `${currentUser.id || 'PELANGGAN'} • ${currentUser.wa}`;
+        document.getElementById('akunAddressDisplay').textContent = currentUser.address || 'Alamat belum diisi';
+      } else {
+        avatar.textContent = '👤';
+        avatar.className = 'w-9 h-9 rounded-full bg-brand-50 text-brand-600 font-extrabold text-xs flex items-center justify-center shrink-0';
+        title.textContent = 'Belum Login Pelanggan';
+        sub.textContent = 'Daftar / masuk dulu sebelum memesan';
+        btn.textContent = 'Daftar / Masuk';
+        btn.onclick = () => openAuthModal('register');
+
+        guestCard.classList.remove('hidden');
+        userCard.classList.add('hidden');
+      }
+    }
+
+    function openAuthModal(tab = 'register') {
+      switchAuthTab(tab);
+      openModal('authModal');
+    }
+
+    function switchAuthTab(tab) {
+      const btnReg = document.getElementById('authTabRegister');
+      const btnLog = document.getElementById('authTabLogin');
+      const formReg = document.getElementById('authRegisterForm');
+      const formLog = document.getElementById('authLoginForm');
+
+      if (tab === 'register') {
+        btnReg.className = 'py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-sm transition';
+        btnLog.className = 'py-2 rounded-lg text-xs font-semibold text-gray-600 transition';
+        formReg.classList.remove('hidden');
+        formLog.classList.add('hidden');
+      } else {
+        btnLog.className = 'py-2 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-sm transition';
+        btnReg.className = 'py-2 rounded-lg text-xs font-semibold text-gray-600 transition';
+        formLog.classList.remove('hidden');
+        formReg.classList.add('hidden');
+      }
+    }
+
+    async function handleCustomerRegister() {
+      const name = document.getElementById('regName').value.trim();
+      const wa = normalizeWa(document.getElementById('regWa').value);
+      const pin = document.getElementById('regPin').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const address = document.getElementById('regAddress').value.trim();
+
+      if (!name || wa.length < 9 || pin.length < 4) {
+        showToast('Nama, Nomor WA valid, & PIN min. 4 digit wajib diisi!');
+        return;
+      }
+
+      const btn = document.getElementById('btnDoRegister');
+      btn.disabled = true;
+      btn.textContent = 'Mendaftarkan Akun...';
+
+      try {
+        const res = await callGAS('registerCustomer', { name, wa, pin, email, address });
+        if (!res || !res.success) {
+          showToast((res && res.message) || 'Registrasi gagal');
+          return;
+        }
+        currentUser = res.user;
+        safeSetLocal('mmt_current_user', JSON.stringify(currentUser));
+        updateCustomerAuthUI();
+        closeModal('authModal');
+        showToast(res.message);
+
+        if (currentUser.status === 'AKTIF' && pendingActionAfterAuth) {
+          const act = pendingActionAfterAuth;
+          pendingActionAfterAuth = null;
+          act();
+        }
+      } catch (err) {
+        showToast('Error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Daftar & Lanjutkan Pemesanan';
+      }
+    }
+
+    async function handleCustomerLogin() {
+      const wa = normalizeWa(document.getElementById('loginWa').value);
+      const pin = document.getElementById('loginPin').value.trim();
+      if (!wa || !pin) {
+        showToast('Isi Nomor WhatsApp dan PIN Anda!');
+        return;
+      }
+
+      const btn = document.getElementById('btnDoLogin');
+      btn.disabled = true;
+      btn.textContent = 'Memeriksa Akun...';
+
+      try {
+        const res = await callGAS('loginCustomer', wa, pin);
+        if (!res || !res.success) {
+          showToast((res && res.message) || 'Login gagal');
+          return;
+        }
+        currentUser = res.user;
+        safeSetLocal('mmt_current_user', JSON.stringify(currentUser));
+        if (Array.isArray(res.orders)) {
+          ordersHistory = res.orders;
+          safeSetLocal('mmt_orders_cache', JSON.stringify(ordersHistory));
+          renderTransaksiList();
+        }
+        updateCustomerAuthUI();
+        closeModal('authModal');
+        showToast(`Selamat datang kembali, ${currentUser.name}!`);
+
+        if (pendingActionAfterAuth) {
+          const act = pendingActionAfterAuth;
+          pendingActionAfterAuth = null;
+          act();
+        }
+      } catch (err) {
+        showToast('Error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Masuk ke Akun Saya';
+      }
+    }
+
+    function logoutCustomer() {
+      currentUser = null;
+      safeRemoveLocal('mmt_current_user');
+      updateCustomerAuthUI();
+      showToast('Anda telah keluar dari akun.');
+    }
+
+    // 3. CATEGORY, FORM & CALCULATOR LOGIC
+    function selectPrintCategory(catKey) {
+      currentCategory = catKey;
+      document.querySelectorAll('.cat-tab').forEach(btn => {
+        btn.classList.remove('bg-brand-600', 'text-white', 'shadow-sm', 'font-bold');
+        btn.classList.add('text-gray-600', 'font-semibold');
+      });
+      const activeTab = document.getElementById(`tab-${catKey}`);
+      activeTab.classList.remove('text-gray-600', 'font-semibold');
+      activeTab.classList.add('bg-brand-600', 'text-white', 'shadow-sm', 'font-bold');
+
+      const bahanSelect = document.getElementById('bahanSelect');
+      const materials = (CATALOG[catKey] && CATALOG[catKey].materials) ? CATALOG[catKey].materials : [];
+      bahanSelect.innerHTML = materials.map(m => `<option value="${m.id}">${escapeHtml(m.name)}</option>`).join('');
+      recalculatePrice();
+    }
+
+    function applyPresetSize(p, l) {
+      document.getElementById('panjangInput').value = p;
+      document.getElementById('lebarInput').value = l;
+      recalculatePrice();
+      showToast(`Ukuran diatur ke ${p} × ${l} cm`);
+    }
+
+    function handleQuickSearch() {
+      const q = document.getElementById('headerSearchInput').value.trim().toLowerCase();
+      if (!q) return;
+      if (q.includes('indoor') || q.includes('albatros') || q.includes('luster')) {
+        selectPrintCategory('indoor');
+        showToast('Menampilkan katalog Print Indoor');
+      } else if (q.includes('uv') || q.includes('backlite')) {
+        selectPrintCategory('uv');
+        showToast('Menampilkan katalog Print UV');
+      } else {
+        selectPrintCategory('outdoor');
+        showToast(`Menampilkan bahan cetak untuk "${q}"`);
+      }
+    }
+
+    function getCurrentOrderConfig() {
+      const materials = (CATALOG[currentCategory] && CATALOG[currentCategory].materials) ? CATALOG[currentCategory].materials : [];
+      const selectedMatId = document.getElementById('bahanSelect').value;
+      const mat = materials.find(m => m.id === selectedMatId) || materials[0] || { id: 'default', name: 'Flexy 380 matte', ratePerSqm: 46667 };
+
+      const waktuKey = document.getElementById('waktuSelect').value;
+      const waktuLabel = document.getElementById('waktuSelect').selectedOptions[0].text;
+      const finishingKey = document.getElementById('finishingSelect').value;
+      const finishingLabel = document.getElementById('finishingSelect').selectedOptions[0].text;
+
+      const panjang = Math.max(1, parseFloat(document.getElementById('panjangInput').value) || 0);
+      const lebar = Math.max(1, parseFloat(document.getElementById('lebarInput').value) || 0);
+      const jumlah = Math.max(1, parseInt(document.getElementById('jumlahInput').value) || 1);
+      const catatan = document.getElementById('catatanInput').value.trim();
+
+      const areaSqm = (panjang / 100) * (lebar / 100);
+      const mult = PRODUCTION_MULTIPLIER[waktuKey] || 1;
+      const finFee = FINISHING_ADDON[finishingKey] || 0;
+
+      const rawUnit = (areaSqm * mat.ratePerSqm * mult) + finFee;
+      const unitPrice = Math.max(10000, Math.round(rawUnit / 500) * 500);
+      const subtotal = unitPrice * jumlah;
+
+      return {
+        categoryLabel: CATALOG[currentCategory].label,
+        materialName: mat.name,
+        ratePerSqm: mat.ratePerSqm,
+        waktuLabel,
+        panjang,
+        lebar,
+        areaSqm,
+        jumlah,
+        unitPrice,
+        subtotal,
+        finishing: finishingLabel,
+        catatan,
+        designInfo: uploadMode === 'file'
+          ? (uploadedFileMeta ? uploadedFileMeta.name : 'Belum upload file')
+          : (document.getElementById('designLinkInput').value.trim() || 'Belum isi link')
+      };
+    }
+
+    function recalculatePrice() {
+      const cfg = getCurrentOrderConfig();
+      document.getElementById('hargaSatuanDisplay').textContent = formatRupiah(cfg.unitPrice);
+      document.getElementById('totalPesananDisplay').textContent = formatRupiah(cfg.subtotal);
+      document.getElementById('areaSummaryText').textContent = `${cfg.areaSqm.toFixed(2).replace('.', ',')} m² (${cfg.panjang} × ${cfg.lebar} cm)`;
+      document.getElementById('ratePerMeterText').textContent = `${formatRupiah(cfg.ratePerSqm)} / m²`;
+    }
+
+    // 4. UPLOAD DESIGN & BASE64 CONVERSION
+    function switchUploadMode(mode) {
+      uploadMode = mode;
+      const tabFile = document.getElementById('uploadTabFile');
+      const tabLink = document.getElementById('uploadTabLink');
+      const secFile = document.getElementById('uploadFileSection');
+      const secLink = document.getElementById('uploadLinkSection');
+
+      if (mode === 'file') {
+        tabFile.className = 'flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-bold bg-white text-brand-600 shadow-sm transition';
+        tabLink.className = 'flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold text-gray-600 hover:text-gray-900 transition';
+        secFile.classList.remove('hidden');
+        secLink.classList.add('hidden');
+      } else {
+        tabLink.className = 'flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-bold bg-white text-brand-600 shadow-sm transition';
+        tabFile.className = 'flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold text-gray-600 hover:text-gray-900 transition';
+        secLink.classList.remove('hidden');
+        secFile.classList.add('hidden');
+      }
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      document.getElementById('dropZone').classList.add('bg-mint-100', 'scale-[1.01]');
+    }
+
+    function handleDragLeave(e) {
+      e.preventDefault();
+      document.getElementById('dropZone').classList.remove('bg-mint-100', 'scale-[1.01]');
+    }
+
+    function handleFileDrop(e) {
+      e.preventDefault();
+      document.getElementById('dropZone').classList.remove('bg-mint-100', 'scale-[1.01]');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        processDesignFile(e.dataTransfer.files[0]);
+      }
+    }
+
+    function handleFileSelected(e) {
+      if (e.target.files && e.target.files[0]) {
+        processDesignFile(e.target.files[0]);
+      }
+    }
+
+    function processDesignFile(file) {
+      const maxBytes = 50 * 1024 * 1024;
+      if (file.size > maxBytes) {
+        showToast('Ukuran file melebihi batas maksimal 50MB!');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const dataUrl = ev.target.result;
+        const base64Data = dataUrl.split(',')[1];
+        const ext = file.name.split('.').pop().toUpperCase();
+        const sizeStr = file.size > 1024 * 1024
+          ? `${(file.size / (1024 * 1024)).toFixed(2)} MB`
+          : `${Math.round(file.size / 1024)} KB`;
+
+        uploadedFileMeta = {
+          name: file.name,
+          size: sizeStr,
+          mimeType: file.type || 'application/octet-stream',
+          base64: base64Data
+        };
+
+        document.getElementById('dropZoneEmpty').classList.add('hidden');
+        document.getElementById('dropZonePreview').classList.remove('hidden');
+        document.getElementById('previewFileName').textContent = file.name;
+        document.getElementById('previewFileSize').textContent = `${sizeStr} • Siap dikirim ke Admin`;
+
+        const thumbBox = document.getElementById('previewThumbBox');
+        if (file.type.startsWith('image/')) {
+          thumbBox.innerHTML = `<img src="${dataUrl}" alt="Preview" class="w-full h-full object-cover" />`;
+        } else {
+          thumbBox.innerHTML = `<span class="text-xs font-extrabold text-brand-600">${ext}</span>`;
+        }
+        showToast('File desain siap dikirim ke email Admin!');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeUploadedFile(e) {
+      e.stopPropagation();
+      uploadedFileMeta = null;
+      document.getElementById('designFileInput').value = '';
+      document.getElementById('dropZonePreview').classList.add('hidden');
+      document.getElementById('dropZoneEmpty').classList.remove('hidden');
+    }
+
+    // 5. CART & CHECKOUT FLOW
+    function addToCart() {
+      if (!currentUser || !currentUser.wa) {
+        pendingActionAfterAuth = addToCart;
+        showToast('Silakan daftar atau masuk terlebih dahulu!');
+        openAuthModal('register');
+        return;
+      }
+      if (currentUser.status && currentUser.status !== 'AKTIF') {
+        showToast('Akun Anda menunggu ACC Admin sebelum dapat memesan.');
+        return;
+      }
+
+      const item = getCurrentOrderConfig();
+      cartItems.push({ ...item, cartId: Date.now() });
+      updateCartBadge();
+      showToast('Pesanan ditambahkan ke keranjang');
+    }
+
+    function updateCartBadge() {
+      const badge = document.getElementById('cartBadge');
+      if (cartItems.length > 0) {
+        badge.textContent = cartItems.length;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    function openCartModal() {
+      const container = document.getElementById('cartItemsContainer');
+      const totalEl = document.getElementById('cartModalTotal');
+      if (cartItems.length === 0) {
+        container.innerHTML = `<div class="py-10 text-center text-xs text-gray-400">Keranjang Anda masih kosong.</div>`;
+        totalEl.textContent = 'Rp 0';
+      } else {
+        let sum = 0;
+        container.innerHTML = cartItems.map((item, idx) => {
+          sum += item.subtotal;
+          return `
+            <div class="p-3 rounded-2xl bg-gray-50 border border-gray-100 flex items-start justify-between gap-2 text-xs">
+              <div class="space-y-0.5">
+                <p class="font-bold text-gray-900">${escapeHtml(item.materialName)} (${item.panjang}×${item.lebar} cm)</p>
+                <p class="text-[11px] text-gray-500">${item.jumlah} pcs • ${escapeHtml(item.finishing)}</p>
+                <p class="text-[11px] font-bold text-brand-600 pt-0.5">${formatRupiah(item.subtotal)}</p>
+              </div>
+              <button type="button" onclick="removeCartItem(${idx})" class="text-gray-400 hover:text-brand-600 p-1">✕</button>
+            </div>
+          `;
+        }).join('');
+        totalEl.textContent = formatRupiah(sum);
+      }
+      openModal('cartModal');
+    }
+
+    function removeCartItem(index) {
+      cartItems.splice(index, 1);
+      updateCartBadge();
+      openCartModal();
+    }
+
+    function proceedToCheckoutFromCart() {
+      if (cartItems.length === 0) {
+        showToast('Keranjang masih kosong');
+        return;
+      }
+      closeModal('cartModal');
+      openCheckoutWithItems([...cartItems]);
+    }
+
+    function buyNow() {
+      if (!currentUser || !currentUser.wa) {
+        pendingActionAfterAuth = buyNow;
+        showToast('Silakan daftar atau masuk terlebih dahulu!');
+        openAuthModal('register');
+        return;
+      }
+      if (currentUser.status && currentUser.status !== 'AKTIF') {
+        showToast('Akun Anda menunggu ACC Admin sebelum dapat memesan.');
+        return;
+      }
+
+      const currentItem = getCurrentOrderConfig();
+      openCheckoutWithItems([currentItem]);
+    }
+
+    function openCheckoutWithItems(items) {
+      checkoutPayloadItems = items;
+      const summaryBox = document.getElementById('checkoutSummaryBox');
+      summaryBox.innerHTML = items.map(i => `
+        <div class="flex justify-between items-start gap-2">
+          <div>
+            <p class="font-bold text-gray-800">${escapeHtml(i.materialName)} (${i.panjang}×${i.lebar}cm × ${i.jumlah})</p>
+            <p class="text-[11px] text-gray-500">${escapeHtml(i.waktuLabel)} • File: ${escapeHtml(i.designInfo)}</p>
+          </div>
+          <span class="font-bold text-gray-900 shrink-0">${formatRupiah(i.subtotal)}</span>
+        </div>
+      `).join('<hr class="border-gray-200/70 my-1.5">');
+
+      if (currentUser) {
+        document.getElementById('custName').value = currentUser.name || '';
+        document.getElementById('custWa').value = currentUser.wa || '';
+      }
+
+      document.getElementById('bcaAccountDisplay').textContent = paymentConfig.bcaAccount || '0153829104';
+      document.getElementById('bcaNameDisplay').textContent = 'a.n. ' + (paymentConfig.bcaName || 'SOLOPRINT DIGITAL');
+      const qrisImg = document.getElementById('qrisCheckoutImg');
+      const qrisPh = document.getElementById('qrisCheckoutPlaceholder');
+      if (paymentConfig.qrisImageUrl) {
+        qrisImg.src = paymentConfig.qrisImageUrl;
+        qrisImg.classList.remove('hidden');
+        qrisPh.classList.add('hidden');
+      } else {
+        qrisImg.classList.add('hidden');
+        qrisPh.classList.remove('hidden');
+      }
+      toggleManualPayMethod('Transfer BCA');
+
+      updateCheckoutTotal();
+      openModal('checkoutModal');
+    }
+
+    function toggleManualPayMethod(method) {
+      const bcaCard = document.getElementById('payBcaCard');
+      const qrisCard = document.getElementById('payQrisCard');
+      const bcaBox = document.getElementById('bcaInfoBox');
+      const qrisBox = document.getElementById('qrisInfoBox');
+
+      if (method === 'QRIS Manual') {
+        qrisCard.querySelector('input').checked = true;
+        qrisCard.className = 'cursor-pointer border-2 border-brand-600 bg-brand-50/70 rounded-xl p-2.5 flex items-center gap-2 transition';
+        bcaCard.className = 'cursor-pointer border border-gray-200 bg-white rounded-xl p-2.5 flex items-center gap-2 transition';
+        bcaBox.classList.add('hidden');
+        qrisBox.classList.remove('hidden');
+      } else {
+        bcaCard.querySelector('input').checked = true;
+        bcaCard.className = 'cursor-pointer border-2 border-brand-600 bg-brand-50/70 rounded-xl p-2.5 flex items-center gap-2 transition';
+        qrisCard.className = 'cursor-pointer border border-gray-200 bg-white rounded-xl p-2.5 flex items-center gap-2 transition';
+        bcaBox.classList.remove('hidden');
+        qrisBox.classList.add('hidden');
+      }
+    }
+
+    function copyBcaAccount() {
+      const rek = paymentConfig.bcaAccount || '0153829104';
+      navigator.clipboard?.writeText(rek);
+      showToast('Nomor rekening BCA ' + rek + ' disalin!');
+    }
+
+    function updateCheckoutTotal() {
+      const itemSum = checkoutPayloadItems.reduce((acc, i) => acc + i.subtotal, 0);
+      const shippingFee = parseInt(document.getElementById('deliveryMethod').value || '0', 10);
+      document.getElementById('checkoutShippingText').textContent = shippingFee === 0 ? 'Gratis Ongkir' : `Ongkir ${formatRupiah(shippingFee)}`;
+      document.getElementById('checkoutFinalTotal').textContent = formatRupiah(itemSum + shippingFee);
+    }
+
+    async function submitOrder() {
+      const custName = document.getElementById('custName').value.trim();
+      const custWa = document.getElementById('custWa').value.trim();
+      if (!custName || !custWa) {
+        showToast('Mohon lengkapi Nama dan Nomor WhatsApp!');
+        return;
+      }
+
+      const btn = document.getElementById('btnSubmitOrder');
+      btn.disabled = true;
+      btn.textContent = 'Mengirim ke Admin...';
+
+      const itemSum = checkoutPayloadItems.reduce((acc, i) => acc + i.subtotal, 0);
+      const shippingFee = parseInt(document.getElementById('deliveryMethod').value || '0', 10);
+      const deliveryLabel = document.getElementById('deliveryMethod').selectedOptions[0].text;
+      const payMethod = document.querySelector('input[name="payMethod"]:checked').value;
+      const grandTotal = itemSum + shippingFee;
+
+      const payload = {
+        branch: currentBranch,
+        custName,
+        custWa,
+        deliveryLabel,
+        payMethod,
+        grandTotal,
+        items: checkoutPayloadItems,
+        designLink: uploadMode === 'link' ? document.getElementById('designLinkInput').value.trim() : '',
+        fileName: (uploadMode === 'file' && uploadedFileMeta) ? uploadedFileMeta.name : '',
+        fileMimeType: (uploadMode === 'file' && uploadedFileMeta) ? uploadedFileMeta.mimeType : '',
+        fileBase64: (uploadMode === 'file' && uploadedFileMeta) ? uploadedFileMeta.base64 : ''
+      };
+
+      try {
+        const res = await callGAS('submitOrderToGAS', payload);
+        if (!res || !res.success) {
+          showToast((res && res.message) || 'Terjadi kesalahan saat mengirim pesanan');
+          return;
+        }
+
+        const newOrder = res.order;
+        ordersHistory.unshift(newOrder);
+        safeSetLocal('mmt_orders_cache', JSON.stringify(ordersHistory));
+
+        notifications.unshift({
+          id: Date.now(),
+          title: `Pesanan ${newOrder.code} Diterima`,
+          desc: `Tersimpan di database & dikirim ke email Admin (${formatRupiah(grandTotal)}).`,
+          time: 'Baru saja',
+          unread: true
+        });
+        document.getElementById('notifBadge').classList.remove('hidden');
+
+        cartItems = [];
+        updateCartBadge();
+        closeModal('checkoutModal');
+
+        showInvoiceModal(newOrder);
+        renderTransaksiList();
+        renderNotifications();
+        showToast('Order berhasil dikirim ke Admin!');
+      } catch (err) {
+        showToast('Gagal terhubung ke server: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Buat Pesanan';
+      }
+    }
+
+    function showInvoiceModal(order) {
+      activeInvoiceOrder = order;
+      pendingProofFile = null;
+      document.getElementById('proofFileInput').value = '';
+
+      document.getElementById('invCode').textContent = order.code;
+      document.getElementById('invDate').textContent = `${order.date} • ${order.branch}`;
+      document.getElementById('invStatusBadge').textContent = order.status || 'Menunggu Pembayaran';
+      document.getElementById('invCustInfo').textContent = `Pemesan: ${order.custName} (${order.custWa})`;
+      document.getElementById('invItemsList').innerHTML = (order.items || []).map(i => `<div>• ${escapeHtml(i.materialName)} (${i.panjang}×${i.lebar}cm × ${i.jumlah})</div>`).join('');
+      document.getElementById('invTotal').textContent = formatRupiah(order.grandTotal);
+
+      const payDetailBox = document.getElementById('invPaymentDetailBox');
+      if (order.payMethod === 'QRIS Manual') {
+        payDetailBox.innerHTML = `
+          <div class="text-center space-y-2">
+            <p class="font-bold text-gray-900">Pembayaran via QRIS Manual</p>
+            ${paymentConfig.qrisImageUrl
+              ? `<img src="${paymentConfig.qrisImageUrl}" alt="QRIS" class="w-44 h-44 mx-auto object-contain rounded-xl border border-gray-200 bg-white p-1.5" />`
+              : `<div class="p-3 bg-white rounded-xl border border-dashed border-gray-300 text-[11px] text-gray-600">Gambar QRIS belum diunggah Admin. Silakan hubungi Admin via Chat atau transfer ke BCA <strong>${paymentConfig.bcaAccount}</strong>.</div>`
+            }
+            <p class="text-[11px] text-gray-600">Scan QRIS di atas senilai <strong>${formatRupiah(order.grandTotal)}</strong> lalu upload screenshot bukti bayar di bawah.</p>
+          </div>
+        `;
+      } else {
+        payDetailBox.innerHTML = `
+          <div class="flex items-center justify-between gap-2">
+            <div>
+              <p class="font-bold text-blue-900">Transfer Bank BCA</p>
+              <p class="font-mono font-extrabold text-sm text-gray-900 mt-0.5">${paymentConfig.bcaAccount}</p>
+              <p class="text-[11px] text-gray-600">a.n. ${paymentConfig.bcaName}</p>
+            </div>
+            <button type="button" onclick="copyBcaAccount()" class="bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold px-3 py-2 rounded-xl">Salin Rek</button>
+          </div>
+        `;
+      }
+
+      const proofStatusBox = document.getElementById('invProofStatusBox');
+      if (order.paymentProofUrl) {
+        proofStatusBox.classList.remove('hidden');
+        proofStatusBox.innerHTML = `✅ Bukti pembayaran sudah terkirim ke Admin. ${order.paymentProofUrl.startsWith('http') ? `<a href="${order.paymentProofUrl}" target="_blank" class="underline font-bold">Lihat Bukti</a>` : ''}`;
+      } else {
+        proofStatusBox.classList.add('hidden');
+      }
+
+      openModal('invoiceModal');
+    }
+
+    function handleProofFileSelected(e) {
+      if (!e.target.files || !e.target.files[0]) return;
+      const file = e.target.files[0];
+      if (file.size > 15 * 1024 * 1024) {
+        showToast('Ukuran bukti transfer maksimal 15MB!');
+        e.target.value = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        pendingProofFile = {
+          name: file.name,
+          mimeType: file.type || 'image/jpeg',
+          base64: ev.target.result.split(',')[1]
+        };
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function uploadSelectedProof() {
+      if (!activeInvoiceOrder) return;
+      if (!pendingProofFile) {
+        showToast('Pilih foto/screenshot bukti pembayaran dulu!');
+        return;
+      }
+
+      const btn = document.getElementById('btnUploadProof');
+      btn.disabled = true;
+      btn.textContent = 'Mengunggah Bukti...';
+
+      try {
+        const res = await callGAS(
+          'submitPaymentProof',
+          activeInvoiceOrder.code,
+          pendingProofFile.base64,
+          pendingProofFile.mimeType,
+          pendingProofFile.name
+        );
+        if (!res || !res.success) {
+          showToast((res && res.message) || 'Gagal mengunggah bukti');
+          return;
+        }
+
+        activeInvoiceOrder.status = res.status;
+        activeInvoiceOrder.paymentProofUrl = res.proofUrl;
+        ordersHistory = ordersHistory.map(o => o.code === activeInvoiceOrder.code ? activeInvoiceOrder : o);
+        safeSetLocal('mmt_orders_cache', JSON.stringify(ordersHistory));
+
+        showInvoiceModal(activeInvoiceOrder);
+        renderTransaksiList();
+        showToast('Bukti transfer terkirim! Admin segera verifikasi.');
+      } catch (err) {
+        showToast('Gagal upload: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Kirim Bukti Pembayaran ke Admin';
+      }
+    }
+
+    function copyInvoiceText() {
+      const code = document.getElementById('invCode').textContent;
+      const total = document.getElementById('invTotal').textContent;
+      const payInfo = activeInvoiceOrder && activeInvoiceOrder.payMethod === 'QRIS Manual'
+        ? 'QRIS Manual'
+        : `BCA ${paymentConfig.bcaAccount} a.n. ${paymentConfig.bcaName}`;
+      navigator.clipboard?.writeText(`Order Cetak MMT ${code}\nTotal: ${total}\nPembayaran: ${payInfo}`);
+      showToast('Detail nota berhasil disalin');
+    }
+
+    // 6. BOTTOM NAV & TRACKING
+    function switchMainTab(tabName) {
+      ['home', 'transaksi', 'notifikasi', 'akun'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('hidden');
+        const navBtn = document.getElementById(`nav-${v}`);
+        navBtn.classList.remove('text-brand-600', 'font-bold');
+        navBtn.classList.add('text-gray-500');
+      });
+
+      document.getElementById(`view-${tabName}`).classList.remove('hidden');
+      const activeNav = document.getElementById(`nav-${tabName}`);
+      activeNav.classList.remove('text-gray-500');
+      activeNav.classList.add('text-brand-600', 'font-bold');
+
+      if (tabName === 'transaksi') renderTransaksiList();
+      if (tabName === 'notifikasi') {
+        document.getElementById('notifBadge').classList.add('hidden');
+        renderNotifications();
+      }
+    }
+
+    async function searchOrderInDatabase() {
+      const q = document.getElementById('trackSearchInput').value.trim();
+      if (!q) {
+        renderTransaksiList();
+        return;
+      }
+      const container = document.getElementById('transaksiListContainer');
+      container.innerHTML = `<div class="p-6 text-center text-xs text-gray-500">Mencari di database...</div>`;
+      try {
+        const results = await callGAS('trackCustomerOrder', q);
+        renderTransaksiList(results);
+      } catch (e) {
+        showToast('Gagal melacak pesanan');
+      }
+    }
+
+    function renderTransaksiList(customList) {
+      const list = customList !== undefined ? customList : ordersHistory;
+      const container = document.getElementById('transaksiListContainer');
+      if (!list || list.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white rounded-2xl p-8 text-center border border-gray-100 space-y-2">
+            <p class="text-xs font-bold text-gray-700">Belum ada data transaksi ditemukan</p>
+            <p class="text-[11px] text-gray-400">Buat pesanan pertama atau masukkan Kode Invoice / No. WA Anda di atas.</p>
+          </div>
+        `;
+        return;
+      }
+      container.innerHTML = list.map((ord, idx) => `
+        <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-card space-y-2.5 text-xs">
+          <div class="flex items-center justify-between">
+            <span class="font-mono font-bold text-brand-600">${escapeHtml(ord.code)}</span>
+            <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">${escapeHtml(ord.status)}</span>
+          </div>
+          <div class="space-y-1 text-gray-700">
+            ${(ord.items || []).map(i => `<p class="font-semibold">${escapeHtml(i.materialName)} (${i.panjang}×${i.lebar} cm × ${i.jumlah})</p>`).join('')}
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+            <div>
+              <span class="text-[11px] text-gray-400 block">${escapeHtml(ord.date)}</span>
+              <span class="font-display font-extrabold text-sm text-gray-900">${formatRupiah(ord.grandTotal)}</span>
+            </div>
+            <button type="button" onclick="openOrderInvoiceFromList(${idx})" class="bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold text-[11px] px-3 py-1.5 rounded-xl transition">
+              ${ord.paymentProofUrl ? 'Detail Nota' : 'Bayar / Upload Bukti'}
+            </button>
+          </div>
+        </div>
+      `).join('');
+      window._lastRenderedOrders = list;
+    }
+
+    function openOrderInvoiceFromList(idx) {
+      const ord = (window._lastRenderedOrders || ordersHistory)[idx];
+      if (ord) showInvoiceModal(ord);
+    }
+
+    function renderNotifications() {
+      const container = document.getElementById('notifListContainer');
+      container.innerHTML = notifications.map(n => `
+        <div class="bg-white rounded-2xl p-3.5 border ${n.unread ? 'border-brand-200 bg-brand-50/30' : 'border-gray-100'} shadow-sm space-y-1 text-xs">
+          <div class="flex items-center justify-between">
+            <p class="font-bold text-gray-900">${escapeHtml(n.title)}</p>
+            <span class="text-[10px] text-gray-400">${escapeHtml(n.time)}</span>
+          </div>
+          <p class="text-[11px] text-gray-600">${escapeHtml(n.desc)}</p>
+        </div>
+      `).join('');
+    }
+
+    function markAllNotifRead() {
+      notifications = notifications.map(n => ({ ...n, unread: false }));
+      document.getElementById('notifBadge').classList.add('hidden');
+      renderNotifications();
+      showToast('Semua notifikasi ditandai dibaca');
+    }
+
+    // 7. LIVE CHAT IN-APP (TERHUBUNG KE DASHBOARD ADMIN)
+    let customerChatPoll = null;
+    let lastRenderedChatCount = -1;
+
+    function getCustomerChatIdentity() {
+      if (currentUser && currentUser.wa) {
+        return {
+          sessionId: normalizeWa(currentUser.wa),
+          name: currentUser.name,
+          wa: normalizeWa(currentUser.wa)
+        };
+      }
+      let guestId = safeGetLocal('mmt_guest_chat_id');
+      if (!guestId) {
+        guestId = 'TAMU-' + Math.floor(1000 + Math.random() * 9000);
+        safeSetLocal('mmt_guest_chat_id', guestId);
+      }
+      return {
+        sessionId: guestId,
+        name: 'Tamu (' + guestId + ')',
+        wa: guestId
+      };
+    }
+
+    function openChatModal() {
+      const ident = getCustomerChatIdentity();
+      document.getElementById('chatIdentitySubtitle').textContent = `● Chat sebagai ${ident.name}`;
+      lastRenderedChatCount = -1;
+      openModal('chatModal');
+      loadCustomerChatMessages(true);
+      clearInterval(customerChatPoll);
+      customerChatPoll = setInterval(() => loadCustomerChatMessages(false), 5000);
+    }
+
+    function closeChatModal() {
+      clearInterval(customerChatPoll);
+      customerChatPoll = null;
+      closeModal('chatModal');
+    }
+
+    async function loadCustomerChatMessages(forceScroll = false) {
+      const ident = getCustomerChatIdentity();
+      try {
+        const msgs = await callGAS('getCustomerChatHistory', ident.sessionId);
+        if (Array.isArray(msgs)) {
+          if (forceScroll || msgs.length !== lastRenderedChatCount) {
+            lastRenderedChatCount = msgs.length;
+            renderCustomerChatList(msgs);
+          }
+        }
+      } catch (e) {}
+    }
+
+    function renderCustomerChatList(msgs) {
+      const container = document.getElementById('chatMessages');
+      const activeAppName = escapeHtml(paymentConfig.appName || 'SoloPrint');
+      const welcomeHtml = `
+        <div class="bg-white border border-gray-100 rounded-2xl rounded-tl-none p-3 max-w-[85%] shadow-sm">
+          <p class="text-gray-800">Halo Kak! Selamat datang di <strong>${activeAppName}</strong>. Tulis pertanyaan Anda di bawah, Admin & Operator Cetak kami akan langsung membalasnya.</p>
+          <span class="text-[10px] text-gray-400 mt-1 block">CS ${activeAppName}</span>
+        </div>
+      `;
+
+      if (!msgs || msgs.length === 0) {
+        container.innerHTML = welcomeHtml;
+        return;
+      }
+
+      const bubbles = msgs.map(m => {
+        if (m.sender === 'ADMIN') {
+          return `
+            <div class="flex justify-start">
+              <div class="bg-white border border-brand-100 rounded-2xl rounded-tl-none p-3 max-w-[85%] shadow-sm">
+                <span class="text-[10px] font-bold text-brand-600 block mb-0.5">🛠️ Admin & Operator Cetak</span>
+                <p class="text-gray-800 whitespace-pre-line">${escapeHtml(m.text)}</p>
+                <span class="text-[10px] text-gray-400 mt-1 block">${escapeHtml(m.time)}</span>
+              </div>
+            </div>
+          `;
+        }
+        return `
+          <div class="flex justify-end">
+            <div class="bg-brand-600 text-white rounded-2xl rounded-tr-none p-3 max-w-[85%] shadow-sm">
+              <p class="whitespace-pre-line">${escapeHtml(m.text)}</p>
+              <span class="text-[10px] text-brand-100 mt-1 block text-right">${escapeHtml(m.time)}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = welcomeHtml + bubbles;
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function sendQuickChat(text) {
+      if (text.includes('rincian order')) {
+        const cfg = getCurrentOrderConfig();
+        text = `Halo Admin, saya mau tanya cetak ${cfg.materialName} (${cfg.categoryLabel}) ukuran ${cfg.panjang}x${cfg.lebar} cm sebanyak ${cfg.jumlah} pcs. Estimasi total ${formatRupiah(cfg.subtotal)}.`;
+      }
+      document.getElementById('chatInput').value = text;
+      sendChatMessage();
+    }
+
+    async function sendChatMessage() {
+      const input = document.getElementById('chatInput');
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const ident = getCustomerChatIdentity();
+      const btn = document.getElementById('btnSendChat');
+      input.value = '';
+      btn.disabled = true;
+
+      const container = document.getElementById('chatMessages');
+      const timeNow = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+      container.innerHTML += `
+        <div class="flex justify-end">
+          <div class="bg-brand-600 text-white rounded-2xl rounded-tr-none p-3 max-w-[85%] shadow-sm">
+            <p class="whitespace-pre-line">${escapeHtml(msg)}</p>
+            <span class="text-[10px] text-brand-100 mt-1 block text-right">${timeNow} • Terkirim</span>
+          </div>
+        </div>
+      `;
+      container.scrollTop = container.scrollHeight;
+
+      try {
+        const res = await callGAS('sendCustomerChat', ident.sessionId, ident.name, ident.wa, msg);
+        if (res && res.success && Array.isArray(res.messages)) {
+          lastRenderedChatCount = res.messages.length;
+          renderCustomerChatList(res.messages);
+        }
+      } catch (err) {
+        showToast('Gagal mengirim pesan: ' + err.message);
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    initCustomerApp();
+  </script>
+</body>
+</html>

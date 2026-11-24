@@ -1,0 +1,31 @@
+PEMBARUAN V6 — NAMA APLIKASI BISA DIUBAH DARI PANEL ADMIN
+
+Fitur baru:
+- Tambah menu isian Nama Aplikasi pada Admin > Pengaturan.
+- Nilai disimpan ke Sheet Pengaturan dengan kunci APP_NAME.
+- Nama tampil pada judul browser pelanggan dan admin, header halaman pelanggan, sambutan Chat CS, dan identitas panel admin.
+- Nama default untuk database yang belum memiliki pengaturan ini adalah SoloPrint.
+- Nama pemilik rekening BCA tetap terpisah dan tidak ikut berubah.
+- Nama aplikasi maksimal 60 karakter.
+
+File dalam paket:
+1. Code.gs
+2. index.html
+3. panel_admin.html
+
+Cara memasang:
+1. Buka project Google Apps Script yang sekarang digunakan.
+2. Ganti isi Code.gs dengan Code.gs dari paket V6.
+3. Ganti isi index.html dengan index.html dari paket V6.
+4. Pastikan ada file HTML bernama panel_admin; ganti isinya dengan panel_admin.html dari paket V6.
+5. Jangan membuat admin.html lama kembali. Halaman admin tetap memakai nama file panel_admin.
+6. Simpan semua file.
+7. Deploy > Manage deployments > Edit > New version > Deploy.
+8. Buka URL admin: URL_WEB_APP_ANDA?page=admin.
+9. Masuk dengan PIN Admin, buka menu Pengaturan, isi Nama Aplikasi, lalu tekan Simpan Pengaturan.
+10. Muat ulang halaman pelanggan. Nama baru akan tampil.
+
+Catatan:
+- Sheet database lama tetap digunakan; tidak perlu membuat spreadsheet baru.
+- Pada Sheet Pengaturan, kunci APP_NAME akan dibuat otomatis saat pengaturan nama pertama kali disimpan (atau saat database baru dibuat).
+- Pemeriksaan sintaks JavaScript berhasil. Login dan operasi Spreadsheet perlu diuji pada deployment Google Apps Script milik Anda.
